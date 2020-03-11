@@ -23,18 +23,10 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [option, setOption] = useState([]);
 
-  function handleChange(event) {
-    setSearchTerm(event.target.value);
-    console.log(searchTerm);
-  }
-
-  function handleSelect() {}
-
   return (
     <div className={css.container}>
       <img src={logo} alt={"logo"} className={css.logo} />
       <h1>Dashboard</h1>
-      <SearchBar handleChange={handleChange} />
       <br></br>
 
       <Router>
@@ -54,7 +46,6 @@ function App() {
         </Switch>
       </Router>
       <AutoComplete
-        handleSelect={handleSelect}
         searchTerm={searchTerm}
         option={option}
         setOption={setOption}
