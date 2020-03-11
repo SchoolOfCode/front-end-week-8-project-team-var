@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import css from "./App.module.css";
+import SearchBar from "../Search/SearchBar";
+import AutoComplete from "../AutoComplete/AutoComplete";
+import NewContract from "../NewContract/NewContract";
+import ContractListItem from "../ContractListItem/ContractListItem";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import logo from "../../components/West-Midlands-CA.png";
 import ContractList from "../ContractList/ContractList";
-import NewEntry from "../NewEntry/NewEntry";
+import Contract from "../Contract/Contract";
 
 //Dashboard Page
 //Should render list of contracts, each showing completion status (e.g. 1/3, 0/3)
@@ -14,11 +20,46 @@ import NewEntry from "../NewEntry/NewEntry";
 // and also paginate contracts rather than endless list!
 
 function App() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [option, setOption] = useState([]);
+
+  function handleChange(event) {
+    setSearchTerm(event.target.value);
+    console.log(searchTerm);
+  }
+
+  function handleSelect() {}
+
   return (
     <div className={css.container}>
+      <img src={logo} alt={"logo"} className={css.logo} />
       <h1>Dashboard</h1>
-      <ContractList />
-      <NewEntry />
+      <SearchBar handleChange={handleChange} />
+      <br></br>
+
+      <Router>
+        <Switch>
+          <Route path="/ContractList">
+            <ContractList />
+          </Route>
+          <Route path="/Contract">
+            <Contract />
+          </Route>
+          <Route path="/NewContract">
+            <NewContract />
+          </Route>
+          {/* <Route path="/NewPerson">
+            <NewPerson />
+          </Route>*/}
+        </Switch>
+      </Router>
+      <AutoComplete
+        handleSelect={handleSelect}
+        searchTerm={searchTerm}
+        option={option}
+        setOption={setOption}
+      />
+      <ContractListItem option={option} setOption={setOption} />
     </div>
   );
 }

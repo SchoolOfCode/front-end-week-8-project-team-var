@@ -10,3 +10,7 @@
   font-family: var(--primary-font);
   padding: 1em;
 }
+.logo {
+  width: 400px;
+  height: 100px;
+}
