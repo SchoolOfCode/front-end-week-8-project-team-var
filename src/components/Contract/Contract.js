@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import CheckBox from "../CheckBox/CheckBox";
+
 // import css from "./contract.css";
 
-//Should retrieve contract info from the db - DONE
+//Should retrieve full contract info from the db - DONE
 //Show three sign off boxes (tick box?) to indicate depts which have signed off.
 //  - Finance
 //  - Legal
@@ -24,7 +26,12 @@ function Contract() {
       });
   }, []);
 
-  function checkSig1() {}
+  //   function checkSig1(props) {
+  //     const clicked = props.clicked;
+  //     if (clicked) {
+  //       return <p>HELLO</p>;
+  //     }
+  //   }
 
   return (
     <div className="contract">
@@ -37,14 +44,11 @@ function Contract() {
       <p>Complete: {doc.complete}</p>
       <p>Budget: {doc.budget}</p>
 
-      <input type="checkbox" id="fsignoff" onClick={checkSig1}></input>
-      <label htmlFor="fsignoff">Finance Signoff</label>
+      <CheckBox label="Finance Signoff" />
       <br></br>
-      <input type="checkbox" id="lsignoff"></input>
-      <label htmlFor="lsignoff">Legal Signoff</label>
+      <CheckBox label="Legal Signoff" />
       <br></br>
-      <input type="checkbox" id="msignoff"></input>
-      <label htmlFor="msignoff">Management Signoff</label>
+      <CheckBox label="Management Signoff" />
     </div>
   );
 }

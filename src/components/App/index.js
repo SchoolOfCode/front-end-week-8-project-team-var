@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import css from "./App.module.css";
 import SearchBar from "../Search/SearchBar";
 import AutoComplete from "../AutoComplete/AutoComplete";
-import NewEntry from "../NewEntry/NewEntry";
+import NewContract from "../NewContract/NewContract";
 import ContractListItem from "../ContractListItem/ContractListItem";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import logo from "../../components/West-Midlands-CA.png";
@@ -32,9 +32,11 @@ function App() {
 
   return (
     <div className={css.container}>
-      <img src={logo} />
+      <img src={logo} alt={"logo"} className={css.logo} />
       <h1>Dashboard</h1>
       <SearchBar handleChange={handleChange} />
+      <br></br>
+
       <Router>
         <Switch>
           <Route path="/ContractList">
@@ -43,9 +45,12 @@ function App() {
           <Route path="/Contract">
             <Contract />
           </Route>
-          <Route path="/NewEntry">
-            <NewEntry />
+          <Route path="/NewContract">
+            <NewContract />
           </Route>
+          {/* <Route path="/NewPerson">
+            <NewPerson />
+          </Route>*/}
         </Switch>
       </Router>
       <AutoComplete
