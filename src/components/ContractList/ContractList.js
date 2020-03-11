@@ -1,6 +1,5 @@
 import React from "react";
-import Contract from "../Contract/Contract";
-// import css from "./contractlist.css";
+import ContractListItem from "../ContractListItem/ContractListItem";
 
 //Should render a list of contracts pulled from the DB.
 //Should also indicate level of completion
@@ -11,9 +10,7 @@ import Contract from "../Contract/Contract";
 function ContractList() {
   return (
     <div>
-      <div>
-        <Contract />
-      </div>
+      <ContractListItem />
     </div>
   );
 }
