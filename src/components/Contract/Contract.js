@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CheckBox from "../CheckBox/CheckBox";
 import "./contract.css";
+import Signature from "../Signature/Signature";
 
 // import css from "./contract.css";
 
@@ -18,6 +19,22 @@ import "./contract.css";
 function Contract() {
   const [doc, setDoc] = useState({});
   const { id } = useParams();
+  const [isSelectedF, setIsSelectedF] = useState(false);
+  const [isSelectedL, setIsSelectedL] = useState(false);
+  const [isSelectedM, setIsSelectedM] = useState(false);
+
+  function onCheckboxChangeF() {
+    // if (isSelectedF) {
+
+    // } else {
+    setIsSelectedF(!isSelectedF);
+  }
+  function onCheckboxChangeL() {
+    setIsSelectedL(!isSelectedL);
+  }
+  function onCheckboxChangeM() {
+    setIsSelectedM(!isSelectedM);
+  }
 
   useEffect(() => {
     fetch(`http://192.168.0.141:5000/contract?id=${id}`)
@@ -40,12 +57,25 @@ function Contract() {
       <p>Summary: {doc.summary}</p>
       <p>Complete: {doc.complete}</p>
       <p>Budget: {doc.budget}</p>
-
-      <CheckBox label="Finance Signoff" />
       <br></br>
-      <CheckBox label="Legal Signoff" />
+      <CheckBox
+        label="Finance Signoff"
+        isSelected={isSelectedF}
+        onCheckboxChange={onCheckboxChangeF}
+      />
       <br></br>
-      <CheckBox label="Management Signoff" />
+      <CheckBox
+        label="Legal Signoff"
+        isSelected={isSelectedL}
+        onCheckboxChange={onCheckboxChangeL}
+      />
+      <br></br>
+      <CheckBox
+        label="Management Signoff"
+        isSelected={isSelectedM}
+        onCheckboxChange={onCheckboxChangeM}
+      />
+      <br></br>
     </div>
   );
 }

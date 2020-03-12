@@ -1,51 +1,52 @@
-import React, { useEffect } from "react";
-
+import React, { useEffect, useState, useRef } from "react";
+import UseEventListener from "../UseEventListener/UseEventListener";
+let ctx;
+let c;
 function Signature() {
+  const [isDrawing, setIsDrawing] = useState(false);
   const canvasRef = useRef(null);
+  const [image, setImage] = useState();
+  console.log(image);
+
   useEffect(() => {
-    var canvas = document.getElementById("signCanvas");
-    var ctx = canvas.getContext("2d");
-
-    var img = canvas.toDataURL("image/png");
-
-    let isDrawing = false;
-    function getMousePos(canvas, event) {
-      var rect = canvas.getBoundingClientRect();
-      return {
-        x: event.clientX - rect.left,
-        y: event.clientY - rect.top
-      };
-    }
-    canvas.addEventListener("mousedown", () => {
-      isDrawing = true;
-      let mousePos = getMousePos(canvas, event);
-      Draw(mousePos.x, mousePos.y, isDrawing);
-    });
-    canvas.addEventListener("mouseup", () => {
-      isDrawing = false;
-    });
-    canvas.addEventListener("mousemove", () => {
-      let mousePos = getMousePos(canvas, event);
-      Draw(mousePos.x, mousePos.y, isDrawing);
-    });
-    function Draw(x, y, isDrawing) {
-      if (isDrawing) {
-        ctx.beginPath();
-        ctx.strokeStyle = "black";
-        ctx.lineWidth = 2;
-        ctx.lineJoin = "round";
-        ctx.moveTo(lastX, lastY);
-        ctx.lineTo(x, y);
-        ctx.closePath();
-        ctx.stroke();
-      }
-      lastX = x;
-      lastY = y;
-    }
-    document.write('<img src="' + img + '"/>');
+    c = canvasRef.current;
+    ctx = c.getContext("2d");
   }, []);
 
-  return <canvas id="canvas" height="200" width="400" ref="canvasRef"></canvas>;
-}
+  function draw(x, y) {
+    ctx.lineTo(x, y);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.moveTo(x, y);
+    setImage(c.toDataURL("image/png"));
+  }
 
+  UseEventListener("mousedown", ({ clientX, clientY }) => {
+    const { x, y } = canvasRef.current.getBoundingClientRect();
+    setIsDrawing(true);
+    ctx.beginPath();
+    ctx.moveTo(clientX - x, clientY - y);
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
+    ctx.lineJoin = "round";
+  });
+  UseEventListener("mouseup", () => {
+    setIsDrawing(false);
+  });
+  UseEventListener("mousemove", ({ x: clientX, y: clientY }) => {
+    const { x, y } = canvasRef.current.getBoundingClientRect();
+    if (isDrawing) {
+      draw(clientX - x, clientY - y);
+    }
+  });
+  return (
+    <canvas
+      style={{ border: "3px solid black" }}
+      id="canvas"
+      height={100}
+      width={400}
+      ref={canvasRef}
+    ></canvas>
+  );
+}
 export default Signature;
