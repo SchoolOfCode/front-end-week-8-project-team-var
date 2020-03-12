@@ -18,8 +18,6 @@ function App() {
     <div className={css.container}>
       <img src={logo} alt={"logo"} className={css.logo} />
       <hr></hr>
-      <h1>Dashboard</h1>
-      <br></br>
 
       <Router>
         <Switch>

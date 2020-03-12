@@ -33,6 +33,7 @@ function ContractList() {
 
   return (
     <div>
+      <button className="Button">New Contract</button>
       <SearchBar handleChange={handleChange} />
       <ul>
         {list
