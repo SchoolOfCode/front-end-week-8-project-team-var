@@ -3,6 +3,7 @@ import SearchBar from "../Search/SearchBar";
 import "./contractlist.css";
 
 //Should render a list of contract list items pulled from the DB. - Dooonnnee??
+// can use box to search and narrow down contract list - DONE!!
 
 function ContractList() {
   const [list, setList] = useState([]);
