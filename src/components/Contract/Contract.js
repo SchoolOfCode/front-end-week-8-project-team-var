@@ -21,6 +21,9 @@ function Contract() {
   const [isSelectedM, setIsSelectedM] = useState(false);
 
   function onCheckboxChangeF() {
+    // if (isSelectedF) {
+
+    // } else {
     setIsSelectedF(!isSelectedF);
   }
   function onCheckboxChangeL() {
@@ -50,7 +53,7 @@ function Contract() {
       <p>Summary: {doc.summary}</p>
       <p>Complete: {doc.complete}</p>
       <p>Budget: {doc.budget}</p>
-
+      <br></br>
       <CheckBox
         label="Finance Signoff"
         isSelected={isSelectedF}
