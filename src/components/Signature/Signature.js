@@ -41,7 +41,7 @@ function Signature() {
   });
   return (
     <canvas
-      style={{ border: "3px solid black" }}
+      style={{ border: "1px solid black", backgroundColor: "white" }}
       id="canvas"
       height={100}
       width={400}
