@@ -1,0 +1,16 @@
+.items {
+  list-style: none;
+  width: 400px;
+  height: 35px;
+  background-color: rgb(238, 200, 175);
+  border: solid #e9924f 2px;
+  border-radius: 5em;
+  text-align: left;
+  text-indent: 1em;
+  opacity: 0.7;
+}
+
+.items:hover {
+  transition: 0.8s;
+  background-color: rgb(253, 243, 231);
+}
