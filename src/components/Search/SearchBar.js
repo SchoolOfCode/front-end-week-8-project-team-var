@@ -1,4 +1,5 @@
 import React from "react";
+import "./searchbar.css";
 
 function SearchBar({ handleChange }) {
   function onChange(event) {
@@ -13,7 +14,6 @@ function SearchBar({ handleChange }) {
         placeholder="Search for a contract"
         onChange={onChange}
       ></input>
-      <button>Search</button>
     </div>
   );
 }

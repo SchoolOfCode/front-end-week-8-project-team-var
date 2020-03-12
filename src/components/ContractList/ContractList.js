@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "../Search/SearchBar";
+import "./contractlist.css";
 
 //Should render a list of contract list items pulled from the DB. - Dooonnnee??
 
@@ -32,7 +33,12 @@ function ContractList() {
               .includes(searchTerm.toLowerCase());
           })
           .map(function(contract) {
-            return <li>{contract.summary}</li>;
+            return (
+              <>
+                <li className="items">Summary: {contract.summary}</li>
+                <br></br>
+              </>
+            );
           })}
       </ul>
     </div>

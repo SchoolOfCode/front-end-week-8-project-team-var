@@ -17,7 +17,7 @@ function Contract() {
   const [doc, setDoc] = useState({});
 
   useEffect(() => {
-    fetch(`http://192.168.0.141:5000/contract`)
+    fetch(`http://192.168.0.141:5000/contract/`)
       .then(response => {
         return response.json();
       })
@@ -25,13 +25,6 @@ function Contract() {
         setDoc(data[0]);
       });
   }, []);
-
-  //   function checkSig1(props) {
-  //     const clicked = props.clicked;
-  //     if (clicked) {
-  //       return <p>HELLO</p>;
-  //     }
-  //   }
 
   return (
     <div className="contract">

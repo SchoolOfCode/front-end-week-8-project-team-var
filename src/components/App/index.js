@@ -1,9 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import css from "./App.module.css";
-import SearchBar from "../Search/SearchBar";
-import AutoComplete from "../AutoComplete/AutoComplete";
 import NewContract from "../NewContract/NewContract";
-import ContractListItem from "../ContractListItem/ContractListItem";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import logo from "../../components/West-Midlands-CA.png";
 import ContractList from "../ContractList/ContractList";
@@ -20,12 +17,10 @@ import Contract from "../Contract/Contract";
 // and also paginate contracts rather than endless list!
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [option, setOption] = useState([]);
-
   return (
     <div className={css.container}>
       <img src={logo} alt={"logo"} className={css.logo} />
+      <hr></hr>
       <h1>Dashboard</h1>
       <br></br>
 
@@ -45,12 +40,6 @@ function App() {
           </Route>*/}
         </Switch>
       </Router>
-      <AutoComplete
-        searchTerm={searchTerm}
-        option={option}
-        setOption={setOption}
-      />
-      <ContractListItem option={option} setOption={setOption} />
     </div>
   );
 }
