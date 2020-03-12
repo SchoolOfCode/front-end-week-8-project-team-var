@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import CheckBox from "../CheckBox/CheckBox";
+import "./contract.css";
 import Signature from "../Signature/Signature";
 
 // import css from "./contract.css";
@@ -16,6 +18,7 @@ import Signature from "../Signature/Signature";
 
 function Contract() {
   const [doc, setDoc] = useState({});
+  const { id } = useParams();
   const [isSelectedF, setIsSelectedF] = useState(false);
   const [isSelectedL, setIsSelectedL] = useState(false);
   const [isSelectedM, setIsSelectedM] = useState(false);
@@ -34,11 +37,12 @@ function Contract() {
   }
 
   useEffect(() => {
-    fetch(`http://192.168.0.141:5000/contract/`)
+    fetch(`http://192.168.0.141:5000/contract?id=${id}`)
       .then(response => {
         return response.json();
       })
       .then(data => {
+        console.log(data);
         setDoc(data[0]);
       });
   }, []);

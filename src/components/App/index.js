@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./App.module.css";
 import NewContract from "../NewContract/NewContract";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import logo from "../../components/West-Midlands-CA.png";
 import ContractList from "../ContractList/ContractList";
 import Contract from "../Contract/Contract";
@@ -12,9 +12,6 @@ import Contract from "../Contract/Contract";
 //  -Should also have button to open each contract and view data
 
 //Should include button to create new db entries
-
-//Would also like to have functionality to search/filter by contract ID number
-// and also paginate contracts rather than endless list!
 
 function App() {
   return (
@@ -29,15 +26,12 @@ function App() {
           <Route path="/ContractList">
             <ContractList />
           </Route>
-          <Route path="/Contract">
+          <Route path="/Contract/:id">
             <Contract />
           </Route>
           <Route path="/NewContract">
             <NewContract />
           </Route>
-          {/* <Route path="/NewPerson">
-            <NewPerson />
-          </Route>*/}
         </Switch>
       </Router>
     </div>

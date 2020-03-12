@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import SearchBar from "../Search/SearchBar";
 import "./contractlist.css";
 
 //Should render a list of contract list items pulled from the DB. - Dooonnnee??
 // can use box to search and narrow down contract list - DONE!!
 
+//extra - Include both provider name and summary
+
 function ContractList() {
   const [list, setList] = useState([]);
+  // const [list2, setList2] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const history = useHistory();
 
   useEffect(() => {
     fetch(`http://192.168.0.141:5000/contract`)
@@ -21,6 +26,9 @@ function ContractList() {
 
   function handleChange(value) {
     setSearchTerm(value);
+  }
+  function handleClick(id) {
+    history.push(`Contract/${id}`);
   }
 
   return (
@@ -36,7 +44,12 @@ function ContractList() {
           .map(function(contract) {
             return (
               <>
-                <li className="items">Summary: {contract.summary}</li>
+                <li
+                  onClick={() => handleClick(contract.contract_id)}
+                  className="items"
+                >
+                  {contract.provider_name}
+                </li>
                 <br></br>
               </>
             );
