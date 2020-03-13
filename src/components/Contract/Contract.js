@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import CheckBox from "../CheckBox/CheckBox";
 import "./contract.css";
-import Signature from "../Signature/Signature";
-
-// import css from "./contract.css";
 
 //Should retrieve full contract info from the db - DONE
 //Show three sign off boxes (tick box?) to indicate depts which have signed off.
