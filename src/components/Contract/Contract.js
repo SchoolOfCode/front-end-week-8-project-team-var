@@ -56,6 +56,7 @@ function Contract() {
   }
   return (
     <div className="contract">
+      <p>Provider Name: {doc.provider_name}</p>
       <p>Contract Id: {doc.contract_id}</p>
       <p>Start Date: {doc.start_date}</p>
       <p>End Date: {doc.end_date}</p>
