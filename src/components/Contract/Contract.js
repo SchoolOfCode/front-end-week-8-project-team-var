@@ -44,6 +44,16 @@ function Contract() {
       });
   }, []);
 
+  async function handleDelete() {
+    const res = await fetch(
+      `http://192.168.0.141:5000/contract/${doc.contract_id}`,
+      {
+        method: "DELETE"
+      }
+    );
+    alert("Contract Deleted!");
+    console.log(res);
+  }
   return (
     <div className="contract">
       <p>Contract Id: {doc.contract_id}</p>
@@ -73,8 +83,20 @@ function Contract() {
         onCheckboxChange={onCheckboxChangeM}
       />
       <br></br>
+      <button onClick={handleDelete} type="submit" value="submit">
+        {""}Delete Contract{""}
+      </button>
     </div>
   );
 }
 
 export default Contract;
+
+// call handleDelete
+// function handleDelete() {
+//   postDelete(current_contract_id);
+// }
+
+// function postDelete(id) {
+//   "fetch to delete route in backend, handing the id of the contract to be deleted"
+// }

@@ -27,3 +27,15 @@ button:hover {
   transition: 0.8s;
   background-color: rgb(253, 243, 231);
 }
+
+.cheatButton {
+  border-radius: 5em;
+  margin: 1em;
+  border: solid #e9924f 2px;
+  background-color: rgb(238, 200, 175);
+}
+
+.cheatButton:hover {
+  transition: 0.8s;
+  background-color: rgb(253, 243, 231);
+}

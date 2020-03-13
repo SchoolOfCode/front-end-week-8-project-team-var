@@ -33,7 +33,9 @@ function ContractList() {
 
   return (
     <div>
-      <button className="Button">New Contract</button>
+      <form action="http://localhost:3000/newcontract">
+        <input className="cheatButton" type="submit" value="New Contract" />
+      </form>
       <SearchBar handleChange={handleChange} />
       <ul>
         {list

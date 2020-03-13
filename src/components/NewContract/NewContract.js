@@ -21,9 +21,10 @@ function NewContract() {
       body: JSON.stringify(contract)
     };
     console.log(post);
-    fetch(`http://localhost:5000/contract`, post)
+    fetch(`http://192.168.0.141:5000/contract`, post)
       .then(res => res.json())
       .then(data => setContract(data));
+    alert("New Contract Added!");
   }
   function handleChange(event) {
     const { name, value } = event.target;
