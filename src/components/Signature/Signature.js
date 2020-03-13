@@ -6,7 +6,7 @@ function Signature() {
   const [isDrawing, setIsDrawing] = useState(false);
   const canvasRef = useRef(null);
   const [image, setImage] = useState();
-  console.log(image);
+  console.log("Signature Image in base64: ", image);
 
   useEffect(() => {
     c = canvasRef.current;
@@ -39,14 +39,21 @@ function Signature() {
       draw(clientX - x, clientY - y);
     }
   });
+  function clearCanvas() {
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, 1000, 1000);
+  }
   return (
-    <canvas
-      style={{ border: "1px solid black", backgroundColor: "white" }}
-      id="canvas"
-      height={100}
-      width={400}
-      ref={canvasRef}
-    ></canvas>
+    <>
+      <canvas
+        style={{ border: "1px solid black", backgroundColor: "white" }}
+        id="canvas"
+        height={100}
+        width={400}
+        ref={canvasRef}
+      ></canvas>
+      <button onClick={clearCanvas}>Clear</button>
+    </>
   );
 }
 export default Signature;
