@@ -40,7 +40,7 @@ function ContractList() {
       <ul>
         {list
           .filter(function(contract) {
-            return contract.summary
+            return contract.provider_name
               .toLowerCase()
               .includes(searchTerm.toLowerCase());
           })
